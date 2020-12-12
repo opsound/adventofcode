@@ -17,5 +17,5 @@
          (string->set (car g))
          (map string->set (cdr g))))
 
-(foldl (λ (s count) (+ count (set-count s))) 0 (map anyone-yes GROUPS))
-(foldl (λ (s count) (+ count (set-count s))) 0 (map everyone-yes GROUPS))
+(apply + (map (λ (g) (set-count (anyone-yes g))) GROUPS))
+(apply + (map (λ (g) (set-count (everyone-yes g))) GROUPS))
