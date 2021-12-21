@@ -15,7 +15,7 @@ fn part1(input: &[Entry]) -> usize {
 
 fn to_binary(s: &str) -> u8 {
     s.chars()
-        .map(|c| 1 << (c as u8 - 'a' as u8))
+        .map(|c| 1 << (c as u8 - b'a'))
         .fold(0, |a, b| a | b)
 }
 
