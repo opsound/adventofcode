@@ -32,17 +32,13 @@ fn step(input: &mut [Vec<u8>]) -> u64 {
 
     while !stack.is_empty() {
         let (i, j) = stack.pop().unwrap();
-        if input[i][j] != 0xff {
-            input[i][j] += 1;
+        if input[i][j] == 0xff {
+            continue;
         }
+        input[i][j] += 1;
         if input[i][j] == 10 {
             input[i][j] = 0xff;
-            stack.extend(
-                adjacent(i, j, nrows, ncols)
-                    .iter()
-                    .flatten()
-                    .filter(|(i, j)| input[*i][*j] != 0xff),
-            );
+            stack.extend(adjacent(i, j, nrows, ncols).iter().flatten());
         }
     }
 
