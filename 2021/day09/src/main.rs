@@ -60,7 +60,7 @@ fn measure_basin(input: &[Vec<u8>], i: usize, j: usize) -> usize {
                 .into_iter()
                 .flatten()
                 .filter(|x| !visited.contains(x))
-                .filter(|(ii, jj)| (input[*ii][*jj] > input[i][j]) && (input[*ii][*jj] != 9)),
+                .filter(|&(ii, jj)| (input[ii][jj] > input[i][j]) && (input[ii][jj] != 9)),
         );
     }
 
